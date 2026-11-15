@@ -1,0 +1,92 @@
+{
+ "name": "s1",
+ "sha": "8da217921045486d",
+ "time": "2026-11-14 14:32:25",
+ "verdict": "PASS",
+ "conditions": [],
+ "final": false,
+ "copied": false,
+ "accept": "",
+ "rows": [
+  {
+   "check": "표준 라이브러리만 사용",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "check": "평가 명령 빌드",
+   "status": "PASS",
+   "detail": "g++ -std=c++20 -O2 -o s1 s1.cpp"
+  },
+  {
+   "check": "경고 없음",
+   "status": "PASS",
+   "detail": "-Wall -Wextra -Wshadow -Wconversion"
+  },
+  {
+   "check": "1층 정답 사례",
+   "status": "PASS",
+   "detail": "6개 전부 일치"
+  },
+  {
+   "check": "사람이 확인한 정답 사례",
+   "status": "PASS",
+   "detail": "1개: 01_example"
+  },
+  {
+   "check": "정답 사례 교차 확인 (다른 모델)",
+   "status": "PASS",
+   "detail": "6개 중 6개가 다른 모델(자체 시험)이 원문만 보고 구한 출력과 같다"
+  },
+  {
+   "check": "예외 표와 테스트의 대응",
+   "status": "PASS",
+   "detail": "7행 모두 테스트가 있다"
+  },
+  {
+   "check": "메모리·정의되지 않은 동작 (1층 입력)",
+   "status": "PASS",
+   "detail": "address, undefined"
+  },
+  {
+   "check": "2층 불변식 검사 (1층 입력)",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "check": "검사기의 힘 (check.py)",
+   "status": "확인",
+   "detail": "틀리게 바꾼 출력 106개 중 91개를 잡았다. 못 잡은 예: 01_example.in 1번째 줄 `TICK 005930 70000 OK` → `TICK 005930 70500 OK`; 01_example.in 2번째 줄 `TICK 005930 70500 OK` → `TICK 005930 70000 OK`; 01_example.in 3번째 줄 `TICK 005930 90000 SPIKE` → `TICK 005930 70000 OK`"
+  },
+  {
+   "check": "정답 사례에서 독립 구현의 출력",
+   "status": "PASS",
+   "detail": "6개 모두 기대 출력과 같다"
+  },
+  {
+   "check": "3층 무작위 입력 + 독립 구현 비교",
+   "status": "PASS",
+   "detail": "500회 실행, 실패 0 (3초, 고정 seed 20261115 300개 + 새 seed 1794634349 200개. 생성기: gen.py 하나(답안을 쓴 쪽이 만든 것))"
+  },
+  {
+   "check": "무작위 입력의 치우침",
+   "status": "확인",
+   "detail": "거의 나오지 않는 출력: REJECT … OVERFILL(0.5%). 많이 나온 출력: REJECT … UNKNOWN_ID 28%, TICK … OK 16%, BAD 12%, TICK … SPIKE 10%. gen.py 가 이 갈래를 더 자주 지나가게 고친다"
+  },
+  {
+   "check": "큰 입력 실행 시간",
+   "status": "PASS",
+   "detail": "gen.py#1 2.8MB(20만 줄) 0.03초(줄당 0.16마이크로초)(독립 구현과 일치)"
+  },
+  {
+   "check": "큰 입력 메모리",
+   "status": "PASS",
+   "detail": "gen.py#1 10MB(줄당 50바이트)"
+  },
+  {
+   "check": "실행되지 않은 줄",
+   "status": "확인",
+   "detail": "3줄이 어떤 시험에서도 실행되지 않았다 (실행 가능한 163줄 중. 1층만으로는 3줄): 61, 66, 80"
+  }
+ ]
+}

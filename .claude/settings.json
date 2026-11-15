@@ -1,0 +1,70 @@
+{
+  "model": "fable",
+  "effortLevel": "high",
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "opus"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(scripts/verify.sh:*)",
+      "Bash(scripts/final_gate.sh:*)",
+      "Bash(scripts/mutants.sh:*)",
+      "Bash(scripts/board.sh:*)",
+      "Bash(scripts/clock.sh:*)",
+      "Bash(scripts/try.sh:*)",
+      "Bash(scripts/new_problem.sh:*)",
+      "Bash(scripts/log_step.sh:*)",
+      "Bash(scripts/codex_ask.sh:*)",
+      "Bash(scripts/collect_logs.sh:*)",
+      "Bash(scripts/inbox_scan.sh:*)",
+      "Bash(scripts/human_ok.sh:*)",
+      "Bash(scripts/pack.sh:*)",
+      "Bash(scripts/xcheck.sh:*)",
+      "Bash(scripts/transcribe_check.sh:*)",
+      "Bash(scripts/usage_export.sh:*)",
+      "Bash(python3 scripts/selftest.py:*)",
+      "Bash(g++:*)",
+      "Bash(python3 gen.py:*)",
+      "Bash(python3 check.py:*)",
+      "Bash(diff:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(sudo:*)",
+      "Read(./runs/**)",
+      "Read(./qa/**)",
+      "Read(./HARNESS_QA_BRIEF.md)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/collect_logs.sh --quiet",
+            "timeout": 20
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/collect_logs.sh --quiet",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
